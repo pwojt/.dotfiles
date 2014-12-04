@@ -1,3 +1,10 @@
+" Necesary for lots of cool vim things
+set nocompatible
+" install pathogen
+" execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
 " Change mapleader
 let mapleader=","
 
@@ -8,7 +15,7 @@ nnoremap ; :
 nnoremap j gj
 nnoremap k gk
 
-" Local dirs
+" Local dirs setup
 set backupdir=$DOTFILES/caches/vim
 set directory=$DOTFILES/caches/vim
 set undodir=$DOTFILES/caches/vim
@@ -125,10 +132,11 @@ set splitbelow " New split goes below
 set splitright " New split goes right
 
 " Ctrl-J/K/L/H select split
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-nnoremap <C-H> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
+nnoremap <C-h> <C-W>h
+nnoremap <leader>w <C-w>v<C-w>l
 
 " Buffer navigation
 nnoremap <leader>b :CtrlPBuffer<CR> " List other buffers
@@ -247,4 +255,49 @@ Plug 'mattn/emmet-vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'chase/vim-ansible-yaml'
 Plug 'wavded/vim-stylus'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-haml'
+Plug 'skalnik/vim-vroom'
+Plug 'tpope/vim-endwise'
 call plug#end()
+
+set encoding=utf-8
+" Clear search text
+nnoremap <leader><space> :noh<cr>
+" Map tab for moving around better
+nnoremap <tab> %
+vnoremap <tab> %
+" Disable arrow keys to avoid using them
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" get rid of F1 Key
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+" Auto save on focus lost
+au FocusLost * :wa
+
+" fold html tag
+nnoremap <leader>ft Vatzf
+
+" hight text that was just pasted
+nnoremap <leader>v V`]
+
+" open .vimrc in split pane
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
+" map jj to escape
+inoremap jj <ESC>
+
+nnoremap <leader>a :Ack

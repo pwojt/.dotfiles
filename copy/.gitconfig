@@ -1,6 +1,6 @@
 [user]
-  name = Ben Alman
-  email = EMAIL
+  name = Przemek Wojtowicz
+  email = pwojtowicz@enova.com
 [core]
   autocrlf = input
   whitespace = fix,space-before-tab,tab-in-indent,trailing-space
@@ -19,6 +19,7 @@
   rv = review
   st = status
   ksdiff = difftool -y -t Kaleidoscope
+  pr = "!f() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
 [branch "master"]
   remote = origin
   merge = refs/heads/master
