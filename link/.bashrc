@@ -23,3 +23,5 @@ function dotfiles() {
 }
 
 src
+
+source /usr/local/share/chruby/chruby.sh
