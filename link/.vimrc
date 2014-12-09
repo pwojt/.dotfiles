@@ -262,6 +262,7 @@ Plug 'tpope/vim-cucumber'
 Plug 'tpope/vim-haml'
 Plug 'skalnik/vim-vroom'
 Plug 'tpope/vim-endwise'
+Plug 'godlygeek/tabular'
 call plug#end()
 
 set encoding=utf-8
