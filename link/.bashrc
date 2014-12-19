@@ -22,7 +22,7 @@ function dotfiles() {
   $DOTFILES/bin/dotfiles "$@" && src
 }
 
-if [[ ".extra" ]]; then
+if [ -e ".extra" ]; then
   source ".extra"
 fi
 
