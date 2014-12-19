@@ -22,6 +22,10 @@ function dotfiles() {
   $DOTFILES/bin/dotfiles "$@" && src
 }
 
+if [[ ".extra" ]]; then
+  source ".extra"
+fi
+
 src
 
 source /usr/local/share/chruby/chruby.sh
