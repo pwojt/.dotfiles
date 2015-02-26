@@ -245,6 +245,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-bundler'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fatih/vim-go'
@@ -263,6 +264,10 @@ Plug 'tpope/vim-haml'
 Plug 'skalnik/vim-vroom'
 Plug 'tpope/vim-endwise'
 Plug 'godlygeek/tabular'
+Plug 'slim-template/vim-slim'
+Plug 'thoughtbot/vim-rspec'
+Plug 'rking/ag.vim'
+Plug 'vim-scripts/vim-coffee-script'
 call plug#end()
 
 set encoding=utf-8
