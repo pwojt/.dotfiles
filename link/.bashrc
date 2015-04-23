@@ -27,5 +27,3 @@ if [ -e ".extra" ]; then
 fi
 
 src
-
-source /usr/local/share/chruby/chruby.sh

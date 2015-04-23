@@ -1,4 +1,4 @@
-is_debian || return 1
+is_mint || return 1
 
 # Update APT.
 e_header "Updating APT"
@@ -7,14 +7,11 @@ sudo apt-get -qq upgrade
 
 # Install APT packages.
 packages=(
-  ansible
   build-essential
   cowsay
   git-core
   htop
-  id3tool
   libssl-dev
-  mercurial
   nmap
   silversearcher-ag
   sl

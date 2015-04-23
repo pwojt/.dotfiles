@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 [[ "$1" == "source" ]] || \
 
-echo 'Dotfiles - "Cowboy" Ben Alman - http://benalman.com/'
+echo 'Dotfiles - Przemek Wojtowicz - http://wojtowicz.technology - inspired by: "Cowboy" Ben Alman - http://benalman.com/'
 
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then cat <<HELP
 
@@ -48,6 +48,10 @@ function is_ubuntu() {
 function is_debian() {
   [[ "$(cat /etc/issue 2> /dev/null)" =~ Debian ]] || return 1
 }
+function is_mint() {
+  [[ "$(cat /etc/issue 2> /dev/null)" =~ Mint ]] || return 1
+}
+
 function get_os() {
   for os in osx ubuntu debian; do
     is_$os; [[ $? == ${1:-0} ]] && echo $os
