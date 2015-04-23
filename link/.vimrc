@@ -267,7 +267,11 @@ Plug 'godlygeek/tabular'
 Plug 'slim-template/vim-slim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'rking/ag.vim'
-Plug 'vim-scripts/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script'
+Plug 'sandeepravi/refactor-rails.vim'
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/ZoomWin'
 call plug#end()
 
 set encoding=utf-8
@@ -306,4 +310,7 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 " map jj to escape
 inoremap jj <ESC>
 
-nnoremap <leader>a :Ack
+nnoremap <leader>a :Ag
+
+autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
+highlight def link rubyRspec Function
