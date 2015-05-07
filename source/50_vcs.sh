@@ -22,7 +22,7 @@ alias gcb='gc -b'
 alias gbc='gc -b' # Dyslexia
 alias gr='git remote'
 alias grv='gr -v'
-#alias gra='git remote add'
+alias gra='git remote add'
 alias grr='git remote rm'
 alias gcl='git clone'
 alias gcd='git rev-parse 2>/dev/null && cd "./$(git rev-parse --show-cdup)"'
@@ -45,16 +45,6 @@ function ged() {
   echo "Opening $n $([[ "$@" ]] || echo "modified ")file$([[ $n != 1 ]] && \
     echo s)${@:+ modified in }$@"
   q "${files[@]}"
-}
-
-# add a github remote by github username
-function gra() {
-  if (( "${#@}" != 1 )); then
-    echo "Usage: gra githubuser"
-    return 1;
-  fi
-  local repo=$(gr show -n origin | perl -ne '/Fetch URL: .*github\.com[:\/].*\/(.*)/ && print $1')
-  gr add "$1" "git://github.com/$1/$repo"
 }
 
 # GitHub URL for current repo.
