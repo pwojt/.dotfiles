@@ -21,37 +21,13 @@ casks=(
   # Applications
   a-better-finder-rename
   bettertouchtool
-  charles
-  chromium
-  chronosync
-  dropbox
   fastscripts
-  firefox
   google-chrome
-  gyazo
   hex-fiend
-  istat-menus
   iterm2
-  launchbar
   macvim
-  moom
   omnidisksweeper
-  race-for-the-galaxy
-  reaper
   remote-desktop-connection
-  sonos
-  spotify
-  steam
-  synology-assistant
-  teamspeak-client
-  the-unarchiver
-  todoist
-  totalfinder
-  tower
-  transmission-remote-gui
-  vagrant
-  virtualbox
-  vlc
   # Quick Look plugins
   betterzipql
   qlcolorcode
@@ -63,9 +39,6 @@ casks=(
   quicknfo
   suspicious-package
   webp-quicklook
-  # Color pickers
-  colorpicker-developer
-  colorpicker-skalacolor
 )
 
 # Install Homebrew casks.

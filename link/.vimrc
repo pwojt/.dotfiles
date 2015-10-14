@@ -272,6 +272,7 @@ Plug 'sandeepravi/refactor-rails.vim'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/ZoomWin'
+Plug 'vim-scripts/drools.vim'
 call plug#end()
 
 set encoding=utf-8
@@ -313,4 +314,5 @@ inoremap jj <ESC>
 nnoremap <leader>a :Ag
 
 autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
+au bufreadpost,filereadpost *.drl set ft=drools
 highlight def link rubyRspec Function

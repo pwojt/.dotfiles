@@ -22,8 +22,8 @@ function dotfiles() {
   $DOTFILES/bin/dotfiles "$@" && src
 }
 
-if [ -e ".extra" ]; then
-  source ".extra"
+if [ -e "$HOME/.extra" ]; then
+  source "$HOME/.extra"
 fi
 
 src
