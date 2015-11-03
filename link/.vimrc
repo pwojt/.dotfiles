@@ -1,12 +1,13 @@
 " Necesary for lots of cool vim things
 set nocompatible
+let $BASH_ENV='~/.bashrc'
 " install pathogen
 " execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
 " Change mapleader
-let mapleader=","
+let mapleader="\<Space>"
 
 " Now ; works just like : but with 866% less keypresses!
 nnoremap ; :
@@ -61,10 +62,10 @@ set sidescrolloff=3 " Start scrolling three columns before vertical border of wi
 
 " Indentation
 set autoindent " Copy indent from last line when starting new line.
-set shiftwidth=2 " The # of spaces for indenting.
+set shiftwidth=4 " The # of spaces for indenting.
 set smarttab " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces.
-set softtabstop=2 " Tab key results in 2 spaces
-set tabstop=2 " Tabs indent only 2 spaces
+set softtabstop=4 " Tab key results in 2 spaces
+set tabstop=4 " Tabs indent only 2 spaces
 set expandtab " Expand tabs to spaces
 
 " Reformatting
@@ -201,6 +202,9 @@ augroup END
 
 " PLUGINS
 
+" Ack
+nnoremap <leader>a :Ag<space>
+
 " Airline
 let g:airline_powerline_fonts = 1 " TODO: detect this?
 let g:airline#extensions#tabline#enabled = 1
@@ -216,7 +220,14 @@ let NERDTreeMinimalUI = 1
 " Open automatically if no files were specified on the CLI.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Automatically close vim if NERDTree is the only file open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Map Toggel and Focus to n and N
 map <leader>n :NERDTreeToggle<CR>
+map <leader>N :NERDTreeFocus<CR>
+
+" Tagbar
+map <leader>t :Tagbar<CR>
 
 " Signify
 let g:signify_vcs_list = ['git', 'hg', 'svn']
@@ -236,6 +247,7 @@ let g:mustache_abbreviations = 1
 " https://github.com/junegunn/vim-plug
 " Reload .vimrc and :PlugInstall to install plugins.
 call plug#begin('~/.vim/plugged')
+Plug 'rking/ag.vim'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
@@ -266,18 +278,20 @@ Plug 'tpope/vim-endwise'
 Plug 'godlygeek/tabular'
 Plug 'slim-template/vim-slim'
 Plug 'thoughtbot/vim-rspec'
-Plug 'rking/ag.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'sandeepravi/refactor-rails.vim'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/ZoomWin'
 Plug 'vim-scripts/drools.vim'
+Plug 'benmills/vimux'
+Plug 'vim-scripts/java_checkstyle.vim'
+Plug 'tpope/vim-abolish'
 call plug#end()
 
 set encoding=utf-8
 " Clear search text
-nnoremap <leader><space> :noh<cr>
+nnoremap <leader>, :noh<cr>
 " Map tab for moving around better
 nnoremap <tab> %
 vnoremap <tab> %
@@ -311,8 +325,8 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 " map jj to escape
 inoremap jj <ESC>
 
-nnoremap <leader>a :Ag
-
 autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
 au bufreadpost,filereadpost *.drl set ft=drools
+
+nnoremap <leader>a :Ack<space>
 highlight def link rubyRspec Function
