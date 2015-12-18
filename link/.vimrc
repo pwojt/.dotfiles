@@ -62,11 +62,14 @@ set sidescrolloff=3 " Start scrolling three columns before vertical border of wi
 
 " Indentation
 set autoindent " Copy indent from last line when starting new line.
-set shiftwidth=4 " The # of spaces for indenting.
+set shiftwidth=2 " The # of spaces for indenting.
 set smarttab " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces.
-set softtabstop=4 " Tab key results in 2 spaces
-set tabstop=4 " Tabs indent only 2 spaces
+set softtabstop=2 " Tab key results in 2 spaces
+set tabstop=2 " Tabs indent only 2 spaces
 set expandtab " Expand tabs to spaces
+
+"" Java Indentation
+au FileType java setl sw=4 sts=2 ts=4 et
 
 " Reformatting
 set nojoinspaces " Only insert single space after a '.', '?' and '!' with a join command.
@@ -141,6 +144,7 @@ nnoremap <leader>w <C-w>v<C-w>l
 
 " Buffer navigation
 nnoremap <leader>b :CtrlPBuffer<CR> " List other buffers
+nnoremap <leader>B :Buffers<CR> " Buffers navigation
 map <leader><leader> :b#<CR> " Switch between the last two files
 map gb :bnext<CR> " Next buffer
 map gB :bprev<CR> " Prev buffer
@@ -213,6 +217,9 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 "let g:airline#extensions#tabline#fnamecollapse = 0
 "let g:airline#extensions#tabline#fnamemod = ':t'
 
+" Bbye aka Bdelete
+:nnoremap <Leader>q :Bdelete<CR>
+
 " NERDTree
 let NERDTreeShowHidden = 1
 let NERDTreeMouseMode = 2
@@ -243,6 +250,11 @@ let g:indent_guides_guide_size = 1
 
 " Mustache/handlebars
 let g:mustache_abbreviations = 1
+
+" Vimux
+map <leader>Vn :wa <bar> VimuxRunCommand ''<Left>
+map <leader>Vl :wa <bar> VimuxRunLastCommand <CR>
+map <leader>Vc :VimuxCloseRunner <CR>
 
 " https://github.com/junegunn/vim-plug
 " Reload .vimrc and :PlugInstall to install plugins.
@@ -287,6 +299,7 @@ Plug 'vim-scripts/drools.vim'
 Plug 'benmills/vimux'
 Plug 'vim-scripts/java_checkstyle.vim'
 Plug 'tpope/vim-abolish'
+Plug 'moll/vim-bbye'
 call plug#end()
 
 set encoding=utf-8
@@ -328,5 +341,5 @@ inoremap jj <ESC>
 autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
 au bufreadpost,filereadpost *.drl set ft=drools
 
-nnoremap <leader>a :Ack<space>
+nnoremap <leader>a :Ag<space>
 highlight def link rubyRspec Function
