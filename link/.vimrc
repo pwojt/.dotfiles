@@ -1,6 +1,5 @@
 " Necesary for lots of cool vim things
 set nocompatible
-let $BASH_ENV='~/.bashrc'
 " install pathogen
 " execute pathogen#infect()
 syntax on
@@ -300,6 +299,7 @@ Plug 'benmills/vimux'
 Plug 'vim-scripts/java_checkstyle.vim'
 Plug 'tpope/vim-abolish'
 Plug 'moll/vim-bbye'
+Plug 'elzr/vim-json'
 call plug#end()
 
 set encoding=utf-8
@@ -343,3 +343,4 @@ au bufreadpost,filereadpost *.drl set ft=drools
 
 nnoremap <leader>a :Ag<space>
 highlight def link rubyRspec Function
+set shortmess=at
