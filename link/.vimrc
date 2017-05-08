@@ -8,6 +8,9 @@ filetype plugin indent on
 " Change mapleader
 let mapleader="\<Space>"
 
+" Replace word under cursor
+:nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+
 " Now ; works just like : but with 866% less keypresses!
 nnoremap ; :
 
@@ -227,7 +230,7 @@ let NERDTreeMinimalUI = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Automatically close vim if NERDTree is the only file open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Map Toggel and Focus to n and N
 map <leader>n :NERDTreeToggle<CR>
 map <leader>N :NERDTreeFocus<CR>
@@ -251,8 +254,8 @@ let g:indent_guides_guide_size = 1
 let g:mustache_abbreviations = 1
 
 " Vimux
-map <leader>Vn :wa <bar> VimuxRunCommand ''<Left>
-map <leader>Vl :wa <bar> VimuxRunLastCommand <CR>
+map <leader>Vn <Esc> :wa <bar> VimuxRunCommand ''<Left>
+map <leader>Vl <Esc> :wa <bar> VimuxRunLastCommand <CR>
 map <leader>Vc :VimuxCloseRunner <CR>
 
 " https://github.com/junegunn/vim-plug
@@ -300,6 +303,10 @@ Plug 'vim-scripts/java_checkstyle.vim'
 Plug 'tpope/vim-abolish'
 Plug 'moll/vim-bbye'
 Plug 'elzr/vim-json'
+Plug 'LucHermitte/vim-refactor'
+Plug 'vim-scripts/vim-auto-save'
+Plug 'dansomething/vim-eclim'
+Plug 'roxma/vim-tmux-clipboard'
 call plug#end()
 
 set encoding=utf-8
@@ -340,7 +347,13 @@ inoremap jj <ESC>
 
 autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
 au bufreadpost,filereadpost *.drl set ft=drools
+au FileType drl setl sw=4 sts=2 ts=4 et
 
 nnoremap <leader>a :Ag<space>
 highlight def link rubyRspec Function
 set shortmess=at
+
+" Autosave:
+let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
